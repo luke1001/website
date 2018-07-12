@@ -1,0 +1,24 @@
+{{ partial "header.html" . }}
+<br>
+{{if isset .Params "toc" }}
+<div class="row">
+<article class="medium-9 columns">
+    {{if isset .Params "imag" }}<img class="thumbnail" src="{{.Params.imag}}" alt="{{ .Title }}">{{end}}
+    <h3 class="text-center">{{ .Title }}<small> {{if isset .Params "author" }}{{ .Params.author }}{{end}}</small></h3>
+    {{ .Content }}
+</article>
+<aside class="medium-3 columns hide-for-small-only note-tool">
+   <div class="toc" style="font-size: small; display:{{ if eq (len .TableOfContents) 0 }}none{{else}}inherit{{ end }};">
+   <span>目录：</span>{{ .TableOfContents }}
+   </div>
+</aside>
+</div>
+{{else}}
+<article class="row medium-8 columns">
+    {{if isset .Params "imag" }}<img class="thumbnail" src="{{.Params.imag}}" alt="{{ .Title }}">{{end}}
+    <h3 class="text-center">{{ .Title }}<small> {{if isset .Params "author" }}{{ .Params.author }}{{end}}</small></h3>
+    {{ .Content }}
+</article>
+{{end}}
+
+{{ partial "footer.html" . }}

@@ -1,0 +1,19 @@
+{{ partial "header.html" . }}
+<br>
+<div class="row column">
+
+<ul class="vertical menu">
+    {{ range .Site.Sections.course.Pages.GroupByParam "series" }}
+    <li>
+    <h2>{{ .Key }}&nbsp;&nbsp;<small>{{  len .Pages }}</small></h2>
+        <ul class="nested vertical menu">
+         {{ range .Pages.ByWeight }}
+            <li><h4><a href="{{.RelPermalink}}">{{.Params.cn}}</a>&nbsp;<small>{{.Title}}</small></h4><!-- <span class="label text-right">{{.Params.series}}</span> --><br><p>{{ if .Description }}{{  .Description }}{{ else }}{{ .Summary }}{{ if .Truncated }}<div class="read-more-link"><a href="{{ .RelPermalink }}">Read More…</a></div>{{ end }}{{ end }} </p></li><hr>
+         {{ end }}
+        </ul>
+    </li>
+    {{ end }}
+</ul>
+
+</div>
+{{ partial "footer.html" . }}

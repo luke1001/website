@@ -1,0 +1,9 @@
+<ul class="pagination menu simple text-center" role="navigation"  aria-label="Pagination">
+    {{if .HasPrev}}
+      <li><a href="{{ .Prev.URL }}" aria-label="Next page">Prev <span class="show-for-sr">page</span></a></li>
+    {{end}}
+    <li class="current"><span class="show-for-sr">You're on page</span> {{ .PageNumber }} </li>
+    {{if .HasNext}}
+       <li><a href="{{ .Next.URL }}" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+    {{end}}
+</ul>

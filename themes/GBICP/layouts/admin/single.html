@@ -1,0 +1,22 @@
+{{ partial "header.html" . }}
+<br>
+<div class="row column">
+
+<ul class="vertical menu">
+    {{ range .Site.Sections.course.Pages.GroupByParam "series" }}
+    <li>
+    <h2>{{ .Key }}&nbsp;&nbsp;<small>{{  len .Pages }}</small></h2>
+            <table>
+            <th>Course</th><th>Teacher</th><th>URL</th>
+                <tr>{{ range .Pages }}
+                    <td><a href="{{.RelPermalink}}">{{.Params.cn}}</a>&nbsp;<small>{{.Title}}</small></td>
+                    <td>{{.Params.teacher}}</td>
+                    <td>{{.Permalink}}</td>
+                </tr>{{ end }}
+            </table>
+    </li>
+    {{ end }}
+</ul>
+
+</div>
+{{ partial "footer.html" . }}

@@ -1,0 +1,41 @@
+{{ partial "header_blog.html" . }}
+<br>
+<div class="row" id="content">
+    <div class="medium-9 large-9 columns">
+        <h2>{{ .Title }}<small><time>{{ .Date.Format "2006年1月2日" }}</time></small></h2>
+        {{ .Content }}
+        <div class="callout">
+            <ul class="menu simple">
+                <!-- <li><a href="#">{{.Params.author}}</li> -->
+                <li>{{ .Params.category }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="hide-for-small-only medium-3 column note-tool">
+        <div class="row column">
+            <h4><a href="{{ .Site.BaseURL }}/{{ .Section }}">回到博客首页</a></h4>
+            <span>最新文章：</span> {{ range first 3 (where .Site.Pages "Section" "blog") }} {{ .Render "li" }} {{ end }}
+            <hr>
+            <div>
+                {{ range .Site.Pages.GroupByParam "category" }}
+                <span>{{ .Key }}</span>
+                <ul>
+                    {{ range .Pages }}
+                    <li>
+                        <a href="{{ .Permalink }}">{{ .Title }}</a></li> {{ end }}
+                </ul>
+                {{ end }}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+   var player = new MediaElement('player', {
+        success: function(mediaElement, originalNode) {
+
+        }
+    });
+</script>
+{{ partial "footer.html" . }}

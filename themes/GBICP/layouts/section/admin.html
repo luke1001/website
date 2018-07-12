@@ -1,0 +1,48 @@
+{{ partial "header.html" . }}
+<br>
+<div class="row">
+
+<div class="medium-8 columns">
+<div class="row small-up-1 medium-up-2 large-up-3">
+<div class="column">
+<h3>Course:</h3>
+<div class="success callout">
+ <ul>
+ {{ range .Site.Sections.course.Pages.GroupByParam "series" }}
+ <li> <h4>{{ .Key }}&nbsp;&nbsp;<small>{{  len .Pages }}</small></h4></li>
+{{end}}
+ </ul></div>
+</div>
+<div class="column">
+<h3>Blog:</h3>
+<div class="success callout">
+ <ul>
+ {{ range .Site.Sections.blog.Pages.GroupByParam "category" }}
+ <li> <h4>{{ .Key }}&nbsp;&nbsp;<small>{{  len .Pages }}</small></h4></li>
+{{end}}
+ </ul></div>
+ </div>
+</div>
+</div>
+
+<div class="medium-4 column">
+  <a href="/page/style">讲义格式编写说明</a>
+  <a href="/page/organize">讲义、课程编写说明</a>
+</div>
+
+<!-- <div class="medium-4 columns">
+<form name="keeper" action="javascript:location.href =
+window.document.keeper.page.value + ''" style="margin:0;">
+<div style="display:inline;">
+<input type="password" name="page">
+<input type="submit" value="Go">
+<noscript><div style="display:inline;color:#ff0000;
+background-color:#ffff66; font:normal 11px tahoma,sans-serif;">
+<br>Javascript is required to access this<br>area. Yours seems
+to be disabled.</div></noscript></div></form>
+</div> -->
+
+</div>
+{{ partial "footer.html" . }}
+
+

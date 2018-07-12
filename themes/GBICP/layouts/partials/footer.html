@@ -1,0 +1,19 @@
+<footer>
+    <div class="row">
+        <div class="medium-6 columns">
+            <ul class="menu">
+             {{ range .Site.Data.footMenu }}
+             <li><a href="{{ .URL | absURL }}" {{ if and ( isset . "Title" ) ( ne .Title "" ) }} title="{{ .Title }}" {{ end }}>{{ .Name }}</a> </li>
+            {{ end }}   
+            </ul>
+        </div>
+        <div class="medium-6 columns">
+            <ul class="menu float-right">
+                <li class="">&copy; <small>2009-2016</small> {{ .Site.Title }}</li>
+            </ul>
+        </div>
+    </div>
+</footer>
+{{ partial "script.html" . }}
+</body>
+</html>

@@ -1,0 +1,17 @@
+name = "GBICP"
+license = "Apache License 2.0"
+licenselink = "http://gbicp.org"
+description = "A hugo theme based on Foundation"
+homepage = "http://gbicp.org"
+tags = ["material", "minimalistic", "lite", "Foundation"]
+min_version = 0.02
+
+[author]
+  name = "Luke Lu"
+  homepage = "http://gbicp.org"
+
+  # If porting an existing theme
+[original]
+  name = ""
+  homepage = ""
+  repo = ""

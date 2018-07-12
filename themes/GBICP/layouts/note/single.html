@@ -1,0 +1,102 @@
+{{ if  isset .Params "slide" }}
+
+{{/* Slides mode */}}
+
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" prefix="og: http://ogp.me/ns#">
+<head>
+  <link href="/css/remarkjs.css" rel="stylesheet">
+  <script src="/js/remark-latest.min.js"></script>
+</head>
+<body>
+{{/*
+  - https://github.com/gnab/remark/wiki/Markdown is the important reference.
+  - Custom class hide-remark-source hides the markdown while loading the JS,
+    this happens on slower network.
+  - Sadly, remarkjs and Hugo's livereload conflicts, not sure why yet.
+*/}}
+  <textarea id="source" class="hide-remark-source">
+{{ .RawContent }}
+  </textarea>
+  <script>
+    {{/*
+      Work around bug in remarkjs; for an unknown reason,
+      Dom.prototype.setLocationHash() in src/remark/dom.js destroys the relative
+      path, e.g. it set hash as URL and drops pathname. Monkey patch to add it
+      back.
+    */}}
+    var replaceStateOld = window.history.replaceState;
+    window.history.replaceState = function(state, title, URL) {
+      var path = window.location.pathname + URL;
+      return replaceStateOld.apply(this, [state, title, path]);
+    }
+    {{/*
+      - See https://github.com/gnab/remark/wiki/Configuration
+      - The list of styles is at
+        https://github.com/isagalaev/highlight.js/tree/master/src/styles
+    */}}
+    var slideshow = remark.create({});
+    {{/*
+      Only necessary if you are using your own version of highlightjs, for
+      example if you need non-default languages like Go:
+      hljs.initHighlightingOnLoad();
+   */}}
+  </script>
+</body>
+</html>
+
+{{ else }}
+
+{{ partial "header.html" . }}
+<br>
+<article class="row" id="top">
+<div class="medium-9 columns">
+<div class="content text-justify">
+<h2>{{if  .Params.cn }}{{ .Params.cn }}<br><small>{{.Title}}</small>{{ else }}{{.Title}}{{end}}</h2>
+{{ .Content }}
+<div class="callout" id="bottom">
+<ul class="menu simple">
+<li>{{ if isset .Params "kecheng" }}<a href="{{ .Site.BaseURL }}/course/{{ index .Params "kecheng" | urlize }}"><strong>{{ title .Params.kecheng }}</strong></a>{{ end }}</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="hide-for-small-only medium-3 column" data-sticky-container> 
+<div class="sticky" data-sticky data-margin-top="0">
+<ul class="menu vertical align-right">
+<li><a href="{{ .Site.BaseURL }}/course/{{ index .Params "kecheng" | urlize }}"><h5>课程主页</h5></a></li>
+<li><a data-open="courseModal"><h5>课程目录</h5></a></li>
+<li class="{{ if eq (len .TableOfContents) 0 }}hide{{else}}{{ end }}"><a data-open="noteModal"><h5>讲义目录</h5></a></li>
+<li class="{{if isset .Params "file" }}{{else}}hide{{ end }}"><a href="{{ .Params.file }}"><h5>文件下载</h5></a></li>
+</ul>
+</div>
+</div>
+</article>
+
+<div class="reveal" id="courseModal" data-reveal data-animation-in="fade-in">
+   <h5>{{ title .Params.kecheng }}</h5>
+  {{ $termname :=  .Params.kecheng | urlize }}
+  {{ $taxonomy := index .Site.Taxonomies.kecheng $termname }}
+  <!-- TODO： taxonomy拿不到course的变量，reverse -->
+  {{ if isset .Params "continue"}} 
+  {{ range $taxonomy.Pages.ByWeight.Reverse }}
+    <a href="{{ .RelPermalink }}"><h5>{{if  .Params.cn }}{{ .Params.cn }}<br><small>{{.Title}}</small>{{ else }}{{.Title}}{{end}}</h5></a>
+  {{ end }}
+  {{ else }}
+  {{ range $taxonomy.Pages.ByWeight }}
+    <a href="{{ .RelPermalink }}"><h5>{{if  .Params.cn }}{{ .Params.cn }}<br><small>{{.Title}}</small>{{ else }}{{.Title}}{{end}}</h5></a>
+  {{ end }}
+  {{ end }}
+</div>
+
+<div class="large reveal" id="noteModal" data-reveal data-animation-in="fade-in">
+  <h5>{{if  .Params.cn }}{{ .Params.cn }}<br><small>{{.Title}}</small>{{ else }}{{.Title}}{{end}}</h5>
+  <div class="toc">{{ .TableOfContents }}</div>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{{ partial "footer.html" . }}
+
+{{ end }}

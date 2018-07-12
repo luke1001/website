@@ -1,0 +1,7 @@
+[about]
+    Name = "About"
+    URL = "page/about"
+
+[faith]
+    Name = "Faith"
+    URL = "page/faith"

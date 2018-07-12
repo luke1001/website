@@ -1,0 +1,23 @@
+{{ partial "header.html" . }}
+<br>
+<div class="row">
+    <div class="medium-3 large-3 columns">
+            {{if .Params.imag }}<img class="thumbnail" src="{{.Params.imag}}">{{else}}<img class="thumbnail" src="{{.Site.BaseURL}}images/teacher/default_teacher.png">{{end}}
+            <h5>{{ .Title }}</h5><small>{{ .Params.role }}</small>
+             {{ .Content }}
+    </div>
+
+    <div class="medium-9 large-9 columns">
+        <div class="row small-up-1 medium-up-2 large-up-3">
+            <ul class="menu simple">
+           {{ $t := .Title  }}
+           {{ range where .Site.Pages "Section" "course" }}
+           {{ if eq .Params.teacher $t  }}
+           <li><h4><a href="{{.RelPermalink}}">{{ .Title }}</a></h4><p>{{ if .Description }}{{ .Description }}{{else}}{{.Summary}}{{end}}</p></li>
+            {{end}}     
+           {{end}}
+           </ul>
+        </div>
+    </div>
+</div>
+{{ partial "footer.html" . }}

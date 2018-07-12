@@ -1,0 +1,9 @@
+<div class="media-object stack-for-small">
+    <div class="media-object-section">
+        <img class="thumbnail" src="{{if isset .Params "imag" }}{{ index .Params "imag" }}{{else}}/images/course/default-course.png{{end}}" style="width: 150px;">
+    </div>
+    <div class="media-object-section">
+        <a href="{{ .RelPermalink }}"><h5>{{if  .Params.cn }}{{ .Params.cn }}<br><small>{{.Title}}</small>{{ else }}{{.Title}}{{end}}</h5></a>
+        <p>{{ if .Description }}{{ .Description }}{{else}}{{.Summary}}{{end}}</p>
+    </div>
+</div>

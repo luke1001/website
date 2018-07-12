@@ -1,0 +1,49 @@
+    <div class="row">
+    <!-- index bottom left-->
+    <div class="medium-12 large-8 columns" style="border-right: 1px solid #E3E5E8;">
+    <article class="row">
+         {{ range first 3 (where .Data.Pages "Section" "blog") }}
+             {{ .Render "index_list" }}
+         {{ end }}
+    </article>
+    </div>
+    <!-- index bottom right -->
+    <div class="large-4 columns">
+        <aside>
+          <div class="row small-up-3">
+            <div class="column text-center">
+                <i class="fi-social-facebook size-48"></i>
+                <br>
+            </div>
+            <div class="column text-center">
+                <i class="fi-social-twitter size-48"></i>
+                <br>
+            </div>
+            <div class="column text-center">
+                <i class="fi-social-instagram size-48"></i>
+                <br>
+            </div>
+            <div class="column text-center">
+                <i class="fi-social-tumblr size-48"></i>
+            </div>
+            <div class="column text-center">
+                <i class="fi-social-pinterest size-48"></i>
+            </div>
+            <div class="column text-center">
+                <a href="#"><i class="fi-social-youtube size-48"></i></a>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="columns">
+            <!-- <p class="lead">TRENDING POSTS</p> -->
+                <div class="callout">
+                    <h5>院长致辞:</h5>
+                    <p class="menu-text">我以我们的主以及救主–耶稣基督的恩典之名问候你们，祝福你们！我代表恩典圣经学院的所有同工，热烈欢迎你来学习或参观拜访这所独特的、以基督为中心、以圣经为根基的网上神学院。在恩典圣经学院里，你将找到很多资源。我们祈求，这些资源能祝福你的信心、你的生命、你对神的服侍、以及你所服侍的人群！</p>
+                    <span class="text-right">耶稣基督的仆人<br>吉姆-卫特博士<br><a href="/page/about" class="small button">查看全文</a></span>
+                </div>
+            </div>
+          </div>
+        </aside>
+    </div>
+    </div>

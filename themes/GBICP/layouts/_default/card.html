@@ -1,0 +1,16 @@
+<div class="column">
+    <div class="card">
+        <div class="image">
+            <img src="{{ .Params.imag }}" alt="{{.Title}}">
+            <span class="title">
+                <div class="button-group">
+                        <a  href="{{ .RelPermalink }}" class="button">{{ .Params.cn }}</a><br>
+                        <a  href="{{ .RelPermalink }}" class="button">{{ .Title }}</a>
+                </div>
+            </span>
+        </div>
+        <div class="action">
+              <i class="fi-price-tag size-16"></i>&#32;{{ with .Params.series }}<strong>{{ . }}</strong>{{ end }}
+        </div>
+    </div>
+</div>

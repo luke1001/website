@@ -1,0 +1,5 @@
+<div class="column">
+<img class="thumbnail" src="{{if .Params.imag }}{{.Params.imag}}{{else}}{{.Site.BaseURL}}images/teacher/default_teacher.png{{end}}" style="display: block;margin: auto;">
+<h5 class="text-center"><a href="{{.RelPermalink}}">{{.Title}}</a></h5>
+<p>{{ if .Description }}{{ .Description }}{{else}}{{.Summary}}{{end}}</p>
+</div>

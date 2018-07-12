@@ -1,0 +1,21 @@
+{{ partial "header.html" . }}
+
+<section id="main">
+  <div>
+    <h1 id="title">{{ .Title }}</h1>
+<!--     <ul>
+    {{ $data := .Data }}
+    {{ range $key, $value := .Data.Terms.Alphabetical }}
+      <li><a href="{{ $data.Plural }}/{{ $value.Name | urlize }}">{{ $value.Name }}</a> {{ $value.Count }}</li>
+    {{ end }}
+    </ul> -->
+    <table>    {{ $data := .Data }}{{ $g := .Site.BaseURL }}
+      <tr>    {{ range $key, $value := .Data.Terms.Alphabetical }}
+        <td><a href="{{ $data.Plural }}/{{ $value.Name | urlize }}">{{ $value.Name }}</a></td>
+        <td>{{ $value.Count }}</td>
+        <td>{{ $g }}{{ $data.Plural }}/{{ $value.Name | urlize }}</td>
+      </tr>    {{ end }}
+    </table>
+  </div>
+</section>
+{{ partial "footer.html" . }}

@@ -1,0 +1,45 @@
+{{ partial "header.html" . }}
+<br>
+<div class="row">
+    <div class="medium-7 large-6 columns">
+        <a href="{{ .Permalink }}"><h3>{{if  .Params.cn }}{{ .Params.cn }}<br><h4 class="subheader">{{.Title}}</h4>{{ else }}{{.Title}}{{end}}</h3></a>
+        <p class="subheader"> {{ if .Description }}{{ .Description }}{{else}}{{.Summary}}{{end}}</p>
+<!--         {{ $safeu :=replace .Params.teacher "." "" }}
+       <a href="{{ .Site.BaseURL }}teacher/{{ $safeu | urlize}}" class="button">{{ .Params.teacher }}</a> -->
+        <button class="button">{{with .Params.series}}{{.}}{{end}}</time></button>
+    </div>
+    <div class="medium-5 large-6 columns">
+        <div class="callout success">
+             <h5>课程计划&nbsp;<span class="subheader">Course Plan</span>：</h5>
+             {{if isset .Params "plan"}}
+             {{ .Params.plan | markdownify }}
+             {{ end }}
+             <hr>
+             <h5>课程通知&nbsp;<span class="subheader">Announcement</span>：</h5>
+             {{if isset .Params "annc"}}
+             {{ .Params.annc | markdownify }}
+             {{ end }}
+        </div>
+    </div>
+</div>
+<div class="row column">
+    <hr>
+    {{ .Content }}
+</div>
+<div class="row column">
+    <p class="lead">讲义列表：</p>
+</div>
+<div class="row column">
+    {{ $termname :=  lower .Title | urlize }}
+    {{ $taxonomy := index .Site.Taxonomies.kecheng $termname }}
+    {{ if isset .Params "continue"}}
+    {{ range $taxonomy.Pages.ByWeight.Reverse }}
+      {{ .Render "li_course" }}
+    {{ end }}
+    {{ else }}
+    {{ range $taxonomy.Pages.ByWeight }}
+      {{ .Render "li_course" }}
+    {{ end }}
+    {{ end }}
+</div>
+{{ partial "footer.html" . }}

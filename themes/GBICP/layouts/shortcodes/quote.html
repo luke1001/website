@@ -1,0 +1,5 @@
+{{ if len .Params | eq 2 }}
+<div class="callout float-{{ .Get 0 }} clearfix" {{ with .Get 1 }} style="width:{{.}}%;margin-left: 5px;"{{ end }}>{{- .Inner -}}</div>
+{{ else }}
+<div class="callout float-{{ .Get 0 }} {{ .Get 2 }} clearfix" {{ with .Get 1 }} style="width:{{.}}%;margin-left: 5px;"{{ end }} {{ with .Get 2}} {{.}}{{ end }}>{{- .Inner -}}</div>
+{{ end }}

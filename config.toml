@@ -1,0 +1,33 @@
+baseurl = "/"
+languageCode = "zh-CN"
+title = "恩典国际圣经学院"
+theme = "GBICP"
+metaDataFormat = "yaml"
+hasCJKLanguage  = "true"
+copyright = "This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License."
+
+
+[permalinks]
+blog = "/:section/:slug/"
+course = "/:section/:slug/"
+note = "/:section/:slug/"
+teacher = "/:section/:slug/"
+
+[taxonomies]
+kecheng = "kecheng"
+category = "categories"
+
+[params]
+TwitterUser = "gbicp"
+FacebookUser = "gbicp"
+GooglePlusUser = "gbicp"
+copyright = "&copy; 恩典国际圣经学院"
+welcome ="欢迎访问恩典国际圣经学院"
+author = "GBI"
+defaultImage = "images/default.jpg"
+
+[author]
+name = "GBICP"
+email = "admin@gbicp.org"
+
+hasCJKLanguage = true

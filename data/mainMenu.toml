@@ -1,0 +1,37 @@
+[Home]
+    Name = "主页 Home"
+    IconClass = "fa-info-circle"
+    URL = "/"
+    weight = 0
+
+[blog]
+    Name = "博客 Blog"
+    Title = "Show list of posts"
+    URL = "/blog"
+    weight = 8
+
+[course]
+    Name = "课程 Course"
+    Title = "Show list of courses"
+    URL = "/course"
+    weight = 5
+
+
+[curriculum]
+    Name = "课程表 Curriculum"
+    Title = "grace bible institute curriculum"
+    URL = "page/curriculum"
+    weight = 9   
+
+   
+# [teacher]
+#     Name = "Teacher"
+#     Title = "Show list of teacher"
+#     URL = "/teacher"
+#     weight = 6
+
+# [note]
+#     Name = "Notes"
+#     Title = "Show list of notes"
+#     URL = "/kecheng"
+#     weight = 7

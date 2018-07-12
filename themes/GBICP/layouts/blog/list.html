@@ -1,0 +1,15 @@
+<div class="content">
+    <div class="row">
+        <div class="medium-12 large-3 columns">
+            <img class="thumbnail" src="{{if .Params.imag }}{{.Params.imag}}{{else}}{{.Site.BaseURL}}/images/blog/default.png{{end}}">
+        </div>
+        <div class="medium-12 large-9 columns">
+            <h3><a href="{{ .RelPermalink }}">{{.Title}}</a></h3>
+        <p>
+<!--             <span><i class="fi-torso"></i> By {{ .Params.author }} &nbsp;&nbsp;</span>
+            <span><i class="fi-calendar"></i> <time>{{ .Date.Format "2006年1月2日" }}</time> &nbsp;&nbsp;</span> -->
+        </p>
+        <p>{{ if .Description }}{{ .Description }}{{ else }}{{ .Summary }}{{ end }}{{ if .Truncated }} <a href="{{ .RelPermalink }}">Read More…</a>{{ end }}</p> 
+        </div>
+</div>
+</div>

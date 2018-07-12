@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html  class="no-js" lang="{{.Site.LanguageCode}}">
+<head>
+<meta charset="utf-8">
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   {{ if .RSSlink }}
+     <link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+     <link href="{{ .RSSlink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
+   {{ end }}
+  <title>{{ .Site.Title }}</title>
+  {{ partial "meta.html" . }} 
+  {{ partial "design.html" . }} 
+  <script src="/js/mediaelement-and-player.min.js"></script>
+  <link href="/css/mediaelementplayer.css" rel="stylesheet">
+</head>
+<body>
+  {{ partial "top-menu.html" . }}   

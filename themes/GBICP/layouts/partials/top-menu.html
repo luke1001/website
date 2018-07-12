@@ -1,0 +1,26 @@
+<div class="row">
+<div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+    <button class="menu-icon" type="button" data-toggle></button>
+    <div class="title-bar-title">{{ .Site.Title }}</div>
+</div>
+<div class="top-bar" id="main-menu">
+    <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li class="menu-text  hide-for-small-only" data-hide-for="medium">{{ .Site.Title }}</li>
+             {{ range .Site.Data.mainMenu }}
+             <li><a href="{{ .URL | absURL }}" {{ if and ( isset . "Title" ) ( ne .Title "" ) }} title="{{ .Title }}" {{ end }}>{{ .Name }}</a> </li>
+            {{ end }}             
+        </ul>
+    </div>
+    <div class="top-bar-right" data-hide-for="medium">
+        <ul class="menu show-for-large-only">
+            <li>
+                <input type="search" placeholder="Search">
+            </li>
+            <li>
+                <button type="button" class="button">Search</button>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>
